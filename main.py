@@ -1,6 +1,7 @@
 import tkinter as tk
 import bot_data
 import datetime
+import global_settings as gs
 
 def load_accounts_name():
     items = bot_data.get_accounts_directory()
@@ -39,10 +40,10 @@ def create_window():
         countdown_label.config(text="Refresh: " + str(countdown))
         window.after(1000, update_countdown)
         if countdown == 0:
-            countdown = 11
+            countdown = gs.get('time_to_request')
             load_accounts_name()
 
-    countdown = 11
+    countdown = gs.get('time_to_request')
     window.after(1000, update_countdown)
 
     window.mainloop()
