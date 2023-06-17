@@ -1,13 +1,13 @@
 import tkinter as tk
-import bot_data as main
+import bot_data
 import datetime
 
 def load_accounts_name():
-    items = main.get_accounts_directory()
+    items = bot_data.get_accounts_directory()
     listbox.delete(0,tk.END)
     for item in items:
         try:
-            main.make_request(item)
+            bot_data.make_request(item)
             now = datetime.datetime.now()
             listbox.insert(tk.END, item + ' - Updated ' + now.strftime("%Y-%m-%d %H:%M:%S"))
         except Exception:
