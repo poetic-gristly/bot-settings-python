@@ -22,16 +22,16 @@ def login():
         'device_name': gs.get('device_name'),
     }
     try:
-        url_login = gs.get('url_base')+gs.get('url_login')
+        url_login = gs.get('url_base') + gs.get('url_login')
         response = requests.post(url_login, json=payload, headers={"Accept": "application/json","Content-Type": "application/json"})
-
         if response.status_code == 200:
             token = response.text
             global_settings = gs.load()
             global_settings['login_token'] = token
+            print(global_settings)
             gs.save(global_settings)
             print('Login successful. Token saved.')
-
+            window.destroy()
         else:
             print('Login failed.')
     
@@ -41,6 +41,7 @@ def login():
 def main():
     global username_entry
     global password_entry
+    global window
     # Create the main window
     window = tk.Tk()
     window.title('Login')
@@ -51,7 +52,7 @@ def main():
     username_label = tk.Label(window, text='Username:')
     username_label.pack()
     username_entry = tk.Entry(window)
-    username_entry.insert(tk.END, 'admin@lordmobile.com')
+    username_entry.insert(tk.END, 'api@api.com')
     username_entry.pack()
 
     # Create the password label and entry

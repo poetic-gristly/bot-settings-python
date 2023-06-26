@@ -1,8 +1,1 @@
-{
-    "bot_path": "../LordsBot499",
-    "url_base": "http://10.0.0.100/api",
-    "url_login": "/sanctum/token",
-    "login_token": "4|O6ev3KrpD54ZDfJgX9LqyTtInYdfvJ4cJ72d7Ni6",
-    "device_name": "servidor 001",
-    "time_to_request": 300
-}
+{"bot_path": "../LordsBot499", "url_base": "http://10.0.0.100/api", "url_login": "/sanctum/token", "login_token": "8|94fFrghiQUqjFxABkvHuW3lJYNn8RstNnpQrkzaX", "device_name": "servidor 001", "time_to_request": 10}

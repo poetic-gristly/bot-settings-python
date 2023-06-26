@@ -1,18 +1,37 @@
 import tkinter as tk
-import bot_data
+# import bot_data
+import login
+import requests_bot
+import files_bot
 import datetime
 import global_settings as gs
 
 def load_accounts_name():
-    items = bot_data.get_accounts_directory()
+    items = files_bot.get_accounts_directory()
     listbox.delete(0,tk.END)
     for item in items:
         try:
-            bot_data.make_request(item)
+            response = requests_bot.make_request(item)
+            if response.status_code == 200:
+                json_data = response.json()
+                files_bot.save_web_settings(item, json_data[item])
+            elif response.status_code == 401:
+                login.main()
+            else:
+                listbox.insert(tk.END, item + ' - ' + response.status_code + ' - '+ now.strftime("%Y-%m-%d %H:%M:%S"))
             now = datetime.datetime.now()
             listbox.insert(tk.END, item + ' - Updated ' + now.strftime("%Y-%m-%d %H:%M:%S"))
         except Exception:
-            listbox.insert(tk.END, "OFF LINE")
+            listbox.insert(tk.END, "OFF LINE -" + item)
+
+def center_window(window):
+    window_width = window.winfo_reqwidth()
+    window_height = window.winfo_reqheight()
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+    x = int((screen_width / 2) - (window_width / 2))
+    y = int((screen_height / 2) - (window_height / 2))
+    window.geometry(f'+{x}+{y}')
 
 def create_window():
     global listbox
@@ -21,6 +40,7 @@ def create_window():
     window = tk.Tk()
     window.title("Lords Mobile Bot")
     window.geometry("800x600")
+    center_window(window)
 
     label = tk.Label(window, text="Contas")
     label.pack()
