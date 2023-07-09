@@ -5,7 +5,13 @@ import files_bot
 
 def create_header():
     token = gs.get('login_token')
-    return {'Authorization': 'Bearer ' + token, 'Accept':'application/json'}
+    return {
+        'Authorization': 'Bearer ' + token,
+        'Accept':'application/json',
+        'User-Agent': 'BotRequest/0.1',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json'
+    }
 
 def make_request(account):
     api_url = gs.get('url_base')

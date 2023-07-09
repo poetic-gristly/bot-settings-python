@@ -34,6 +34,10 @@ def create_new_settings_content(local, web):
     local['rallySettings'] = web['rallySettings']
     local['cargoShipSettings'] = web['cargoShipSettings']
     local['supplySettings'] = web['supplySettings']
+    local['heroSettings'] = web['heroSettings']
+    local['heroStageSettings'] = web['heroStageSettings']
+    local['arenaSettings'] = web['arenaSettings']
+    local['buildSettings'] = web['buildSettings']
     return local
 
 def write_file(account, local, web):
