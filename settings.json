@@ -1,8 +1,0 @@
-{
-    "bot_path": "D:\\HeroLordsBot",
-    "url_base": "https://herolords.com.br/api",
-    "url_login": "/sanctum/token",
-    "login_token": "11|E3SRN9vYkSlrEjSsbUf04C1SHKpcZygcsYcTmJNM",
-    "device_name": "servidor 001",
-    "time_to_request": 300
-}
