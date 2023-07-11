@@ -38,13 +38,14 @@ def create_new_settings_content(local, web):
     local['heroStageSettings'] = web['heroStageSettings']
     local['arenaSettings'] = web['arenaSettings']
     local['buildSettings'] = web['buildSettings']
+    local['eventSettings'] = web['eventSettings']
     return local
 
 def write_file(account, local, web):
     new_content = create_new_settings_content(local, web)
     path_file = get_account_setting_file_path(account)
     file = open(path_file, 'w')
-    return json.dump(new_content, file, indent='    ')
+    return json.dump(new_content, file, sort_keys=True, indent=4)
 
 def save_web_settings(account, web_content):
     local = get_settings_by_account(account)

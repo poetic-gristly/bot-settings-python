@@ -29,8 +29,8 @@ def center_window(window):
     window_height = window.winfo_reqheight()
     screen_width = window.winfo_screenwidth()
     screen_height = window.winfo_screenheight()
-    x = int((screen_width / 2) - (window_width / 2))
-    y = int((screen_height / 2) - (window_height / 2))
+    x = int((screen_width / 2) - (window_width / 2) - 300)
+    y = int((screen_height / 2) - (window_height / 2) - 300)
     window.geometry(f'+{x}+{y}')
 
 def create_window():

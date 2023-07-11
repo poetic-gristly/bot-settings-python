@@ -6,7 +6,7 @@ def save(obj):
     if Path(file_path).exists() == False or Path(file_path).is_file() == False:
         raise Exception("save(): Arquivo setting com problema")
     file = open('settings.json', 'w')
-    json.dump(obj, file)
+    json.dump(obj, file, sort_keys=True, indent=4)
     file.close()
 
 def load():
